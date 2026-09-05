@@ -1,7 +1,7 @@
 extends Node
 
 
-enum gameStates {PAUSE, PLAY, SHOP, WIN, LOSE}
+enum gameStates {MENU, PAUSE, PLAY, SHOP, WIN, LOSE}
 
 
 @export_group("Player Data")
@@ -12,7 +12,7 @@ enum gameStates {PAUSE, PLAY, SHOP, WIN, LOSE}
 
 @export_group("Game Data")
 
-@export var gameState := gameStates.PAUSE
+@export var gameState := gameStates.MENU
 @export var speedMult := 1.0
 
 

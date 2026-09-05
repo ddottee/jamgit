@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bjgdvilytu6d3"]
+
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://Assets/icon.svg" id="1_4geyq"]
+
+[node name="Settings" type="Control" unique_id=1755028584]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35666698]
+texture = ExtResource("1_4geyq")
