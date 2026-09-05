@@ -1,7 +1,73 @@
 [gd_scene format=3 uid="uid://b6lm83bjkub7l"]
 
+[ext_resource type="Script" uid="uid://clmsq2tvvrvmv" path="res://Scripts/play.gd" id="1_2rl5d"]
+[ext_resource type="Script" uid="uid://dkgu5in3bddd" path="res://Scripts/quit.gd" id="1_87674"]
+[ext_resource type="Script" uid="uid://8x0ic44857v5" path="res://Scripts/settings.gd" id="1_hbrgd"]
+[ext_resource type="Texture2D" uid="uid://dij8hxgmmrsfa" path="res://Assets/GUI/realButtons/levelsButton.png" id="1_tey8t"]
+[ext_resource type="Texture2D" uid="uid://blpo77s04obb1" path="res://Assets/GUI/realButtons/levelsPressed.png" id="2_yv2l0"]
+[ext_resource type="Texture2D" uid="uid://csm148mlyd8f1" path="res://Assets/GUI/realButtons/quitButton.png" id="4_qb1n0"]
+[ext_resource type="Texture2D" uid="uid://ddee28yjvsnr1" path="res://Assets/GUI/realButtons/settingsButton.png" id="5_cnxtp"]
+[ext_resource type="Texture2D" uid="uid://cialu5g8loq0" path="res://Assets/GUI/realButtons/quitPressed.png" id="5_tey8t"]
+[ext_resource type="Texture2D" uid="uid://bq4liqevosd61" path="res://Assets/GUI/realButtons/settingsPressed.png" id="6_ln4g7"]
+[ext_resource type="Texture2D" uid="uid://dintpn7ou7deg" path="res://Assets/GUI/craftpix-net-255216-free-basic-pixel-art-ui-for-rpg/COUPON.png" id="10_cnxtp"]
+
 [node name="mainGUI" type="Control" unique_id=1417164939]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backgroundtexture" type="TextureRect" parent="." unique_id=1590133266]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_cnxtp")
+expand_mode = 1
+
+[node name="buttons" type="VFlowContainer" parent="." unique_id=472313714]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_right = -162.75
+offset_bottom = -408.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_constants/v_separation = 32
+alignment = 1
+
+[node name="Levels" type="TextureButton" parent="buttons" unique_id=1567010167]
+layout_mode = 2
+offset_transform_scale = Vector2(4, 4)
+offset_transform_visual_only = false
+texture_normal = ExtResource("1_tey8t")
+texture_pressed = ExtResource("2_yv2l0")
+script = ExtResource("1_2rl5d")
+
+[node name="Settings" type="TextureButton" parent="buttons" unique_id=1010186334]
+layout_mode = 2
+offset_transform_visual_only = false
+texture_normal = ExtResource("5_cnxtp")
+texture_pressed = ExtResource("6_ln4g7")
+script = ExtResource("1_hbrgd")
+
+[node name="Quit" type="TextureButton" parent="buttons" unique_id=2000848859]
+layout_mode = 2
+offset_transform_scale = Vector2(4, 4)
+offset_transform_visual_only = false
+texture_normal = ExtResource("4_qb1n0")
+texture_pressed = ExtResource("5_tey8t")
+script = ExtResource("1_87674")
+
+[connection signal="pressed" from="buttons/Levels" to="buttons/Levels" method="_on_pressed"]
+[connection signal="pressed" from="buttons/Settings" to="buttons/Settings" method="_on_pressed"]
+[connection signal="pressed" from="buttons/Quit" to="buttons/Quit" method="_on_pressed"]

@@ -110,10 +110,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+
 [node name="goblin" type="CharacterBody2D" unique_id=884670279]
 script = ExtResource("1_xcvi8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1622739437]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1f0kj")
-animation = &"walkDown"
+animation = &"walkUp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2028973941]
+shape = SubResource("RectangleShape2D_g4v7s")
