@@ -1,4 +1,4 @@
-extends Node2D
+extends PathFollow2D
 class_name Enemy
 
 
@@ -11,4 +11,19 @@ class_name Enemy
 
 @export_group("Behavior")
 
+
 @export var inAir := false
+@export var FinishRatio := 99.0
+
+func _ready() -> void:
+	self.progress = 0
+
+
+func _process(delta: float) -> void:
+	self.progress += speed * delta * GlobalScript.speedMult
+	if progress_ratio >= FinishRatio:
+		damagePlayer()
+		
+		
+func damagePlayer():
+	pass

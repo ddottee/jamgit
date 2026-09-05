@@ -19,6 +19,12 @@ config/icon="res://Assets/icon.svg"
 SignalBus="*uid://dy2jpvfcbja6n"
 GlobalScript="*uid://cpsj07cgmvprk"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="viewport"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
