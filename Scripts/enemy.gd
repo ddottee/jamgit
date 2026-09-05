@@ -1,11 +1,11 @@
-extends PathFollow2D
+extends CharacterBody2D
 class_name Enemy
 
 
 @export_group("Stats")
 
 @export var health:= 10
-@export var speed := 5
+@export var speed := 50
 @export var damage := 1
 
 
@@ -15,13 +15,15 @@ class_name Enemy
 @export var inAir := false
 @export var FinishRatio := 99.0
 
+
+@onready var path = get_parent()
 func _ready() -> void:
-	self.progress = 0
+	path.progress = 0
 
 
 func _process(delta: float) -> void:
-	self.progress += speed * delta * GlobalScript.speedMult
-	if progress_ratio >= FinishRatio:
+	path.progress += speed * delta * GlobalScript.speedMult
+	if path.progress_ratio >= FinishRatio:
 		damagePlayer()
 		
 		
