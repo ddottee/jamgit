@@ -15,39 +15,39 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("2_7w5cp")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gt0r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcvi8"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6mmh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w5cp"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ep384"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gt0r"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajbjq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6mmh"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p60ou"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep384"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpiyv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajbjq"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m25tm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p60ou"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfpgn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpiyv"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_deoj1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m25tm"]
 atlas = ExtResource("2_7w5cp")
 region = Rect2(64, 96, 32, 32)
 
@@ -62,10 +62,26 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fkbyy")
+}],
+"loop": 1,
+"name": &"walkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcvi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w5cp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2gt0r")
+}],
+"loop": 1,
+"name": &"walkLeft",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o6mmh")
 }, {
@@ -74,7 +90,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ajbjq")
+}],
+"loop": 1,
+"name": &"walkRight",
+"speed": 5.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p60ou")
 }, {
@@ -83,15 +104,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m25tm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hfpgn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_deoj1")
 }],
 "loop": 1,
-"name": &"walk",
+"name": &"walkUp",
 "speed": 5.0
 }]
 
@@ -101,4 +116,4 @@ script = ExtResource("1_xcvi8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1622739437]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1f0kj")
-animation = &"walk"
+animation = &"walkDown"
