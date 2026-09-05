@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://deotlyst3v2p8"]
 
 [ext_resource type="Script" uid="uid://ctrtviov2qeqh" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://b6lm83bjkub7l" path="res://Scenes/mainGUI.tscn" id="2_bo1nx"]
 
 [node name="main" type="Node2D" unique_id=179411845]
 script = ExtResource("1_jjgbg")
+
+[node name="mainGUI" parent="." unique_id=1417164939 instance=ExtResource("2_bo1nx")]
+offset_right = 0.0
+offset_bottom = 0.0

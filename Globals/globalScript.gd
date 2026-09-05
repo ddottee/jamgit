@@ -16,6 +16,10 @@ enum gameStates {PAUSE, PLAY, SHOP, WIN, LOSE}
 @export var speedMult := 1.0
 
 
+@export_group("Level Data")
+
+@export var enemyDelay := 1.0
+
 
 
 func _process(delta: float) -> void:
