@@ -1,15 +1,18 @@
 [gd_scene format=3 uid="uid://b6lm83bjkub7l"]
 
 [ext_resource type="Script" uid="uid://clmsq2tvvrvmv" path="res://Scripts/play.gd" id="1_2rl5d"]
+[ext_resource type="Texture2D" uid="uid://bb73b2e4i5sld" path="res://Assets/GUI/titleScreen.png" id="1_3wwwf"]
 [ext_resource type="Script" uid="uid://dkgu5in3bddd" path="res://Scripts/quit.gd" id="1_87674"]
 [ext_resource type="Script" uid="uid://8x0ic44857v5" path="res://Scripts/settings.gd" id="1_hbrgd"]
-[ext_resource type="Texture2D" uid="uid://dij8hxgmmrsfa" path="res://Assets/GUI/realButtons/levelsButton.png" id="1_tey8t"]
-[ext_resource type="Texture2D" uid="uid://blpo77s04obb1" path="res://Assets/GUI/realButtons/levelsPressed.png" id="2_yv2l0"]
-[ext_resource type="Texture2D" uid="uid://csm148mlyd8f1" path="res://Assets/GUI/realButtons/quitButton.png" id="4_qb1n0"]
-[ext_resource type="Texture2D" uid="uid://ddee28yjvsnr1" path="res://Assets/GUI/realButtons/settingsButton.png" id="5_cnxtp"]
-[ext_resource type="Texture2D" uid="uid://cialu5g8loq0" path="res://Assets/GUI/realButtons/quitPressed.png" id="5_tey8t"]
-[ext_resource type="Texture2D" uid="uid://bq4liqevosd61" path="res://Assets/GUI/realButtons/settingsPressed.png" id="6_ln4g7"]
-[ext_resource type="Texture2D" uid="uid://dintpn7ou7deg" path="res://Assets/GUI/craftpix-net-255216-free-basic-pixel-art-ui-for-rpg/COUPON.png" id="10_cnxtp"]
+[ext_resource type="Texture2D" uid="uid://cf6rrshss14q3" path="res://Assets/GUI/titleScreenComplete.png" id="2_4ga4v"]
+[ext_resource type="Texture2D" uid="uid://hu12gmpgmbo3" path="res://Assets/GUI/Buttons/startButton.png" id="3_aec7d"]
+[ext_resource type="Texture2D" uid="uid://2lhtvhnebcma" path="res://Assets/GUI/Buttons/startButtonPressed.png" id="4_rsrov"]
+[ext_resource type="Texture2D" uid="uid://dij8hxgmmrsfa" path="res://Assets/GUI/Buttons/levelsButton.png" id="6_4fgvx"]
+[ext_resource type="Texture2D" uid="uid://cu51wic056xrc" path="res://Assets/GUI/Buttons/levelsButtonPressed.png" id="7_7scfk"]
+[ext_resource type="Texture2D" uid="uid://cyu0obimu15q1" path="res://Assets/GUI/Buttons/optionsButton.png" id="8_jdr0x"]
+[ext_resource type="Texture2D" uid="uid://4x5eeojjk31n" path="res://Assets/GUI/Buttons/optionsButtonPressed.png" id="9_nut5j"]
+[ext_resource type="Texture2D" uid="uid://csm148mlyd8f1" path="res://Assets/GUI/Buttons/quitButton.png" id="11_dbpl8"]
+[ext_resource type="Texture2D" uid="uid://prevl7upg24o" path="res://Assets/GUI/Buttons/quitButtonPressed.png" id="12_yar2n"]
 
 [node name="mainGUI" type="Control" unique_id=1417164939]
 layout_mode = 3
@@ -26,48 +29,76 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_cnxtp")
+texture = ExtResource("1_3wwwf")
 expand_mode = 1
 
-[node name="buttons" type="VFlowContainer" parent="." unique_id=472313714]
-texture_filter = 1
+[node name="backgroundtexture2" type="TextureRect" parent="." unique_id=1366433338]
+visible = false
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -273.0
-offset_right = -162.75
-offset_bottom = -408.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4, 4)
-theme_override_constants/v_separation = 32
+texture = ExtResource("2_4ga4v")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2085525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
-[node name="Levels" type="TextureButton" parent="buttons" unique_id=1567010167]
+[node name="buttons" type="VBoxContainer" parent="HBoxContainer" unique_id=794850745]
+texture_filter = 1
 layout_mode = 2
-offset_transform_scale = Vector2(4, 4)
+offset_transform_enabled = true
 offset_transform_visual_only = false
-texture_normal = ExtResource("1_tey8t")
-texture_pressed = ExtResource("2_yv2l0")
+theme_override_constants/separation = -60
+alignment = 2
+
+[node name="Start" type="TextureButton" parent="HBoxContainer/buttons" unique_id=465991325]
+texture_filter = 1
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.7, 0.7)
+offset_transform_visual_only = false
+texture_normal = ExtResource("3_aec7d")
+texture_pressed = ExtResource("4_rsrov")
 script = ExtResource("1_2rl5d")
 
-[node name="Settings" type="TextureButton" parent="buttons" unique_id=1010186334]
+[node name="Levels" type="TextureButton" parent="HBoxContainer/buttons" unique_id=1567010167]
+texture_filter = 1
 layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.7, 0.7)
 offset_transform_visual_only = false
-texture_normal = ExtResource("5_cnxtp")
-texture_pressed = ExtResource("6_ln4g7")
+texture_normal = ExtResource("6_4fgvx")
+texture_pressed = ExtResource("7_7scfk")
+script = ExtResource("1_2rl5d")
+
+[node name="Settings" type="TextureButton" parent="HBoxContainer/buttons" unique_id=1010186334]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.7, 0.7)
+offset_transform_visual_only = false
+texture_normal = ExtResource("8_jdr0x")
+texture_pressed = ExtResource("9_nut5j")
 script = ExtResource("1_hbrgd")
 
-[node name="Quit" type="TextureButton" parent="buttons" unique_id=2000848859]
+[node name="Quit" type="TextureButton" parent="HBoxContainer/buttons" unique_id=2000848859]
 layout_mode = 2
-offset_transform_scale = Vector2(4, 4)
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.7, 0.7)
 offset_transform_visual_only = false
-texture_normal = ExtResource("4_qb1n0")
-texture_pressed = ExtResource("5_tey8t")
+texture_normal = ExtResource("11_dbpl8")
+texture_pressed = ExtResource("12_yar2n")
 script = ExtResource("1_87674")
 
-[connection signal="pressed" from="buttons/Levels" to="buttons/Levels" method="_on_pressed"]
-[connection signal="pressed" from="buttons/Settings" to="buttons/Settings" method="_on_pressed"]
-[connection signal="pressed" from="buttons/Quit" to="buttons/Quit" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/buttons/Start" to="HBoxContainer/buttons/Start" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/buttons/Levels" to="HBoxContainer/buttons/Levels" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/buttons/Settings" to="HBoxContainer/buttons/Settings" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/buttons/Quit" to="HBoxContainer/buttons/Quit" method="_on_pressed"]
