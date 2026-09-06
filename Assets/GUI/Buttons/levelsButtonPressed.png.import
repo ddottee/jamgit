@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb7gbu6cf1ebw"
-path="res://.godot/imported/buyPressed.png-238b2a65ec5457850de0c4ebe4479587.ctex"
+uid="uid://cu51wic056xrc"
+path="res://.godot/imported/levelsButtonPressed.png-2172778a1665d42da074d0067c559d39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/realButtons/buyPressed.png"
-dest_files=["res://.godot/imported/buyPressed.png-238b2a65ec5457850de0c4ebe4479587.ctex"]
+source_file="res://Assets/GUI/Buttons/levelsButtonPressed.png"
+dest_files=["res://.godot/imported/levelsButtonPressed.png-2172778a1665d42da074d0067c559d39.ctex"]
 
 [params]
 
