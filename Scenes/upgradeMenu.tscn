@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://ce6e6yx6wrc51"]
+
+[ext_resource type="Script" uid="uid://jb500cqjdqi7" path="res://Scripts/upgradeMenu.gd" id="1_0bhwf"]
+[ext_resource type="Texture2D" uid="uid://ciopsew8b2c86" path="res://Assets/GUI/towermenuNoButton.png" id="2_vqycy"]
+[ext_resource type="Texture2D" uid="uid://diqhn2qoijo3o" path="res://Assets/GUI/Buttons/purchaseButton.png" id="3_l501a"]
+[ext_resource type="Texture2D" uid="uid://dq3aa3t3q2o6d" path="res://Assets/GUI/Buttons/fireIcon.png" id="4_a0p33"]
+[ext_resource type="Texture2D" uid="uid://s46nfdomvimi" path="res://Assets/GUI/Buttons/buyButton.png" id="4_l501a"]
+[ext_resource type="Texture2D" uid="uid://bfx3e6xwq717c" path="res://Assets/GUI/Buttons/purchaseButtonPressed.png" id="4_pny30"]
+[ext_resource type="Texture2D" uid="uid://bb7gbu6cf1ebw" path="res://Assets/GUI/Buttons/buyPressed.png" id="5_pny30"]
+[ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="5_wucqn"]
+[ext_resource type="Texture2D" uid="uid://dmh7kkndkee1k" path="res://Assets/GUI/Buttons/lightningIcon.png" id="6_bx467"]
+
+[node name="upgradeMenu" type="Panel" unique_id=1949348179]
+script = ExtResource("1_0bhwf")
+
+[node name="menuTexture" type="TextureRect" parent="." unique_id=642196138]
+texture_filter = 1
+layout_mode = 0
+offset_right = 115.0
+offset_bottom = 149.0
+texture = ExtResource("2_vqycy")
+
+[node name="closeButton" type="Button" parent="." unique_id=964388357]
+layout_mode = 0
+offset_left = 102.0
+offset_right = 110.0
+offset_bottom = 13.0
+flat = true
+
+[node name="upgradeBar" type="TextureRect" parent="." unique_id=986218012]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 124.0
+offset_right = 100.0
+offset_bottom = 138.0
+texture = ExtResource("3_l501a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="upgradeBar" unique_id=1290346862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="damageIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=1006913326]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_a0p33")
+expand_mode = 2
+
+[node name="damageNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1349194309]
+layout_mode = 2
+
+[node name="rangeIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=214765955]
+layout_mode = 2
+texture = ExtResource("4_pny30")
+
+[node name="rangeNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1278211351]
+layout_mode = 2
+
+[node name="speedIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=1706397707]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_bx467")
+expand_mode = 3
+
+[node name="speedNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1403004102]
+layout_mode = 2
+
+[node name="upgradeButton" type="TextureButton" parent="." unique_id=1110322026]
+texture_filter = 1
+layout_mode = 0
+offset_left = 74.0
+offset_top = 124.0
+offset_right = 100.0
+offset_bottom = 137.0
+texture_normal = ExtResource("4_l501a")
+texture_pressed = ExtResource("5_pny30")
+
+[node name="targetTypeButton" type="TextureButton" parent="." unique_id=1082218440]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 96.0
+offset_right = 106.0
+offset_bottom = 109.0
+toggle_mode = true
+
+[node name="towerIcon" type="Sprite2D" parent="." unique_id=760862642]
+texture_filter = 1
+position = Vector2(32, 41.000004)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_wucqn")
+vframes = 4

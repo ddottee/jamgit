@@ -1,6 +1,36 @@
 [gd_scene format=3 uid="uid://01douy3fo7t8"]
 
 [ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_ndpwd"]
+[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://Assets/icon.svg" id="2_mh5eo"]
+[ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="3_tghyl"]
 
-[node name="Tower" type="Node2D" unique_id=738350055]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 5.0
+
+[node name="Tower" type="StaticBody2D" unique_id=112576211]
 script = ExtResource("1_ndpwd")
+
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=1223206933]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_mh5eo")
+
+[node name="towerCollider" type="CollisionShape2D" parent="." unique_id=794426740]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="rangeArea" type="Area2D" parent="." unique_id=1891793715]
+
+[node name="rangeCollider" type="CollisionShape2D" parent="rangeArea" unique_id=1520985697]
+shape = SubResource("CircleShape2D_g4v7s")
+debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
+
+[node name="shotTimer" type="Timer" parent="." unique_id=47392313]
+
+[node name="bulletContainer" type="Node" parent="." unique_id=318312679]
+
+[node name="aimMark" type="Marker2D" parent="." unique_id=768596189]
+position = Vector2(24, 0)
+
+[node name="menuTexture" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
