@@ -28,4 +28,5 @@ func _process(delta: float) -> void:
 		
 		
 func damagePlayer():
-	pass
+	GlobalScript.takeDamage(damage)
+	queue_free()

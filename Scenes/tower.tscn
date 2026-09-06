@@ -1,21 +1,24 @@
 [gd_scene format=3 uid="uid://01douy3fo7t8"]
 
 [ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_ndpwd"]
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://Assets/icon.svg" id="2_mh5eo"]
+[ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="2_tghyl"]
 [ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="3_tghyl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 5.0
+radius = 25.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(10, 10)
 
 [node name="Tower" type="StaticBody2D" unique_id=112576211]
+texture_filter = 1
 script = ExtResource("1_ndpwd")
 
-[node name="towerSprite" type="Sprite2D" parent="." unique_id=1223206933]
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=601306373]
 texture_filter = 1
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mh5eo")
+texture = ExtResource("2_tghyl")
+vframes = 4
 
 [node name="rangeArea" type="Area2D" parent="." unique_id=1891793715]
 
@@ -31,6 +34,8 @@ debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
 position = Vector2(24, 0)
 
 [node name="upgradeMenu" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
+visible = false
+texture_filter = 1
 
 [node name="towerArea" type="Area2D" parent="." unique_id=633552855]
 
@@ -39,6 +44,8 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=1709228505]
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1757614805]
 
 [connection signal="pressed" from="upgradeMenu/upgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="input_event" from="towerArea" to="." method="_on_tower_area_input_event"]

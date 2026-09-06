@@ -7,6 +7,7 @@ class_name Tower
 @onready var bulletContainer: Node = $bulletContainer
 @onready var aimMark: Marker2D = $aimMark
 @onready var upgradeMenu : Panel = $upgradeMenu
+@onready var towerSprite: Sprite2D = $towerSprite
 enum targetTypes {FIRST, LAST}
 
 @export_group("Stats")
@@ -42,8 +43,21 @@ func _ready() -> void:
 	upgradeMenu.hide()
 	
 func _process(delta: float) -> void:
+	
 	if is_instance_valid(curr):
-		self.look_at(curr.global_position)
+		
+		var angle = rad_to_deg(get_angle_to(curr.global_position))
+		var angleRad = deg_to_rad(angle)
+		#ANIM: 0 = DOWN, 1 = LEFT, 2 = RIGHT, 3 = UP
+		if angle >= -45 and angle <= 45:
+			towerSprite.frame = 2
+		elif angle >= 45 and angle <= 135:
+			towerSprite.frame = 0
+		elif (angle >= 135 and angle <= 180) or (angle <= -180 and angle >= -45):
+			towerSprite.frame = 1
+		else: 
+			towerSprite.frame = 3
+		aimMark.global_position = 10 * Vector2(cos(angleRad), sin(angleRad))
 		if shotTimer.is_stopped():
 			Shoot()
 			shotTimer.start()
