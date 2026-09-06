@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://jb500cqjdqi7" path="res://Scripts/upgradeMenu.gd" id="1_0bhwf"]
 [ext_resource type="Texture2D" uid="uid://ciopsew8b2c86" path="res://Assets/GUI/towermenuNoButton.png" id="2_vqycy"]
 [ext_resource type="Texture2D" uid="uid://diqhn2qoijo3o" path="res://Assets/GUI/Buttons/purchaseButton.png" id="3_l501a"]
-[ext_resource type="Texture2D" uid="uid://dq3aa3t3q2o6d" path="res://Assets/GUI/Buttons/fireIcon.png" id="4_a0p33"]
+[ext_resource type="Texture2D" uid="uid://ch120mootsdhj" path="res://Assets/Sprites/icons/towerUI/sword_03b.png" id="4_a0p33"]
 [ext_resource type="Texture2D" uid="uid://s46nfdomvimi" path="res://Assets/GUI/Buttons/buyButton.png" id="4_l501a"]
-[ext_resource type="Texture2D" uid="uid://bfx3e6xwq717c" path="res://Assets/GUI/Buttons/purchaseButtonPressed.png" id="4_pny30"]
+[ext_resource type="Texture2D" uid="uid://birexwfqp3iro" path="res://Assets/Sprites/icons/towerUI/bow_01a.png" id="5_bx467"]
 [ext_resource type="Texture2D" uid="uid://bb7gbu6cf1ebw" path="res://Assets/GUI/Buttons/buyPressed.png" id="5_pny30"]
 [ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="5_wucqn"]
-[ext_resource type="Texture2D" uid="uid://dmh7kkndkee1k" path="res://Assets/GUI/Buttons/lightningIcon.png" id="6_bx467"]
+[ext_resource type="Texture2D" uid="uid://bnjxyhg7m1f7e" path="res://Assets/Sprites/icons/towerUI/boots_01d.png" id="6_aqxf5"]
+[ext_resource type="Texture2D" uid="uid://cgyllwner217e" path="res://Assets/Sprites/icons/towerUI/firstShit.png" id="9_aqxf5"]
+[ext_resource type="Texture2D" uid="uid://c80w5o47osuq1" path="res://Assets/Sprites/icons/towerUI/lastShit.png" id="10_dpqm7"]
 
 [node name="upgradeMenu" type="Panel" unique_id=1949348179]
 script = ExtResource("1_0bhwf")
@@ -31,65 +33,67 @@ flat = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
-offset_top = 124.0
+offset_top = 116.0
 offset_right = 100.0
-offset_bottom = 138.0
+offset_bottom = 130.0
 texture = ExtResource("3_l501a")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="upgradeBar" unique_id=1290346862]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="upgradeCont" type="HBoxContainer" parent="upgradeBar" unique_id=1290346862]
+custom_maximum_size = Vector2(82, 9)
+layout_mode = 0
 offset_left = 3.0
-offset_top = 1.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = 2.0
+offset_right = 85.0
+offset_bottom = 11.0
 
-[node name="damageIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=1006913326]
+[node name="damageIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=1006913326]
 texture_filter = 1
+custom_maximum_size = Vector2(10, -1)
 layout_mode = 2
 texture = ExtResource("4_a0p33")
-expand_mode = 2
+stretch_mode = 5
 
-[node name="damageNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1349194309]
+[node name="damageNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1349194309]
 layout_mode = 2
 
-[node name="rangeIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=214765955]
+[node name="rangeIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=214765955]
 layout_mode = 2
-texture = ExtResource("4_pny30")
+texture = ExtResource("5_bx467")
+stretch_mode = 5
 
-[node name="rangeNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1278211351]
+[node name="rangeNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1278211351]
 layout_mode = 2
 
-[node name="speedIcon" type="TextureRect" parent="upgradeBar/HBoxContainer" unique_id=1706397707]
+[node name="speedIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=1706397707]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("6_bx467")
-expand_mode = 3
+texture = ExtResource("6_aqxf5")
+stretch_mode = 5
 
-[node name="speedNum" type="Label" parent="upgradeBar/HBoxContainer" unique_id=1403004102]
+[node name="speedNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1403004102]
 layout_mode = 2
 
 [node name="upgradeButton" type="TextureButton" parent="." unique_id=1110322026]
 texture_filter = 1
 layout_mode = 0
-offset_left = 74.0
-offset_top = 124.0
-offset_right = 100.0
-offset_bottom = 137.0
+offset_left = 43.0
+offset_top = 131.0
+offset_right = 69.0
+offset_bottom = 144.0
 texture_normal = ExtResource("4_l501a")
 texture_pressed = ExtResource("5_pny30")
 
-[node name="targetTypeButton" type="TextureButton" parent="." unique_id=1082218440]
+[node name="targetTypeButton" type="TextureButton" parent="." unique_id=1702323085]
+texture_filter = 1
 layout_mode = 0
 offset_left = 56.0
-offset_top = 96.0
-offset_right = 106.0
-offset_bottom = 109.0
+offset_top = 95.0
+offset_right = 105.0
+offset_bottom = 108.0
 toggle_mode = true
+texture_normal = ExtResource("9_aqxf5")
+texture_pressed = ExtResource("10_dpqm7")
+stretch_mode = 0
 
 [node name="towerIcon" type="Sprite2D" parent="." unique_id=760862642]
 texture_filter = 1
@@ -97,3 +101,60 @@ position = Vector2(32, 41.000004)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("5_wucqn")
 vframes = 4
+
+[node name="nameplate" type="Label" parent="." unique_id=292597232]
+texture_filter = 1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 19.0
+offset_right = 104.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 8
+text = "Tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="description" type="Label" parent="." unique_id=1526700656]
+texture_filter = 1
+layout_mode = 0
+offset_left = 59.0
+offset_top = 32.0
+offset_right = 104.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 5
+text = "tower 
+description"
+
+[node name="damageIcon" type="TextureRect" parent="." unique_id=1895051511]
+texture_filter = 1
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 80.0
+offset_right = 23.0
+offset_bottom = 89.0
+texture = ExtResource("4_a0p33")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="rangeIcon" type="TextureRect" parent="." unique_id=1944337389]
+texture_filter = 1
+layout_mode = 0
+offset_left = 63.0
+offset_top = 80.0
+offset_right = 72.0
+offset_bottom = 89.0
+texture = ExtResource("5_bx467")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="speedIcon" type="TextureRect" parent="." unique_id=705328877]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 97.0
+offset_right = 22.0
+offset_bottom = 106.0
+texture = ExtResource("6_aqxf5")
+expand_mode = 1
+stretch_mode = 5

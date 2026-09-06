@@ -6,15 +6,16 @@ class_name Tower
 @onready var shotTimer: Timer = $shotTimer
 @onready var bulletContainer: Node = $bulletContainer
 @onready var aimMark: Marker2D = $aimMark
+@onready var upgradeMenu : Panel = $upgradeMenu
 enum targetTypes {FIRST, LAST}
 
 @export_group("Stats")
 
-
+@export var level := 1
 @export var damage := 1
 @export var bulletType : PackedScene
 @export var targetRange := 100
-@export var projectileSpeed := 1
+@export var shotSpeed := 1
 
 
 @export_group("Behavior")
@@ -25,7 +26,8 @@ enum targetTypes {FIRST, LAST}
 
 @export_group("Costs")
 @export var cost := 1
-@export var upgradeCost := 1
+@export var upgradeCost := 2
+@onready var currUpgradeCost = upgradeCost
 
 
 var currTargets = []
@@ -37,7 +39,8 @@ func _ready() -> void:
 	rangeArea.body_entered.connect(_on_range_area_body_entered)
 	rangeArea.body_exited.connect(_on_range_area_body_exited)
 	rangeCollider.shape.set_deferred("radius", targetRange)
-
+	upgradeMenu.hide()
+	
 func _process(delta: float) -> void:
 	if is_instance_valid(curr):
 		self.look_at(curr.global_position)
@@ -85,10 +88,25 @@ func _on_range_area_body_entered(body: Node2D) -> void:
 				curr = currTarget
 				pathName = currTarget.get_parent().name
 
+func upgradeStats():
+	level += 1
+	targetRange *= 1.5
+	damage *= 2
+	shotSpeed *= 2
+
 func _on_range_area_body_exited(body: Node2D) -> void:
 	currTargets = get_node("rangeArea").get_overlapping_bodies()
 	
-func _unhandled_input(event: InputEvent) -> void:
+
+
+func _on_tower_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_mask == 1:
+		upgradeMenu.show()
+
+
+func _on_upgrade_button_pressed() -> void:
+	if GlobalScript.playerCash >= currUpgradeCost:
+		GlobalScript.playerCash -= currUpgradeCost
+		currUpgradeCost *= 2
+		upgradeStats()
 		
-		pass

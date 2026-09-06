@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://Assets/icon.svg" id="2_mh5eo"]
 [ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="3_tghyl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 
 [node name="Tower" type="StaticBody2D" unique_id=112576211]
 script = ExtResource("1_ndpwd")
@@ -16,9 +16,6 @@ script = ExtResource("1_ndpwd")
 texture_filter = 1
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mh5eo")
-
-[node name="towerCollider" type="CollisionShape2D" parent="." unique_id=794426740]
-shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="rangeArea" type="Area2D" parent="." unique_id=1891793715]
 
@@ -33,4 +30,17 @@ debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
 [node name="aimMark" type="Marker2D" parent="." unique_id=768596189]
 position = Vector2(24, 0)
 
-[node name="menuTexture" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
+[node name="upgradeMenu" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
+
+[node name="towerArea" type="Area2D" parent="." unique_id=633552855]
+
+[node name="towerCollider" type="CollisionShape2D" parent="towerArea" unique_id=794426740]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=1709228505]
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[connection signal="pressed" from="upgradeMenu/upgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="input_event" from="towerArea" to="." method="_on_tower_area_input_event"]
+
+[editable path="upgradeMenu"]
