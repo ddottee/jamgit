@@ -4,123 +4,188 @@ class_name Tower
 @onready var rangeCollider: CollisionShape2D = $rangeArea/rangeCollider
 @onready var rangeArea: Area2D = $rangeArea
 @onready var shotTimer: Timer = $shotTimer
-@onready var bulletContainer: Node = $bulletContainer
 @onready var aimMark: Marker2D = $aimMark
-@onready var upgradeMenu : Panel = $upgradeMenu
+@onready var upgradeMenu: Panel = $upgradeMenu
 @onready var towerSprite: Sprite2D = $towerSprite
-enum targetTypes {FIRST, LAST}
+@onready var targetTypeButton: TextureButton = $upgradeMenu/targetTypeButton
+@onready var rangeDisplay: Sprite2D = $rangeDisplay
+
+enum targetTypes { FIRST, LAST }
 
 @export_group("Stats")
 
 @export var level := 1
 @export var damage := 1
-@export var bulletType : PackedScene
+@export var bulletType: PackedScene = preload("res://Scenes/bullet.tscn")
 @export var targetRange := 100
 @export var shotSpeed := 1
 
-
 @export_group("Behavior")
 
-@export var priorityTarget = targetTypes.FIRST
+@export var priorityTarget := targetTypes.FIRST
 @export var canTargetAir := false
 
-
 @export_group("Costs")
+
 @export var cost := 1
 @export var upgradeCost := 2
-@onready var currUpgradeCost = upgradeCost
 
+var currUpgradeCost := upgradeCost
 
-var currTargets = []
-var curr
-var pathName
-var startShoot := false
+var currTargets: Array[Node2D] = []
+var curr: Node2D = null
+
+var canShoot := false
+
 
 func _ready() -> void:
 	rangeArea.body_entered.connect(_on_range_area_body_entered)
 	rangeArea.body_exited.connect(_on_range_area_body_exited)
+	rangeDisplay.scale = 1/32 * Vector2(rangeCollider.shape.radius, rangeCollider.shape.radius)
+	rangeDisplay.global_position = self.global_position
+	rangeDisplay.hide()
 	rangeCollider.shape.set_deferred("radius", targetRange)
+
 	upgradeMenu.hide()
-	
+
+	shotTimer.wait_time = 1.0 / shotSpeed
+
+
 func _process(delta: float) -> void:
-	
+	rangeDisplay.visible = upgradeMenu.visible
+	if targetTypeButton.button_pressed:
+		priorityTarget = targetTypes.LAST
+	else:
+		priorityTarget = targetTypes.FIRST
+	find_target()
+
 	if is_instance_valid(curr):
-		
-		var angle = rad_to_deg(get_angle_to(curr.global_position))
-		var angleRad = deg_to_rad(angle)
-		#ANIM: 0 = DOWN, 1 = LEFT, 2 = RIGHT, 3 = UP
+
+		var angle := rad_to_deg(get_angle_to(curr.global_position))
+
 		if angle >= -45 and angle <= 45:
 			towerSprite.frame = 2
-		elif angle >= 45 and angle <= 135:
+		elif angle > 45 and angle < 135:
 			towerSprite.frame = 0
-		elif (angle >= 135 and angle <= 180) or (angle <= -180 and angle >= -45):
+		elif angle >= 135 or angle <= -135:
 			towerSprite.frame = 1
-		else: 
+		else:
 			towerSprite.frame = 3
-		aimMark.global_position = 10 * Vector2(cos(angleRad), sin(angleRad))
-		if shotTimer.is_stopped():
+
+		var direction := global_position.direction_to(curr.global_position)
+
+		aimMark.global_position = global_position + direction
+
+		if canShoot:
 			Shoot()
-			shotTimer.start()
-	else:
-		for i in get_node("bulletContainer").get_child_count():
-			get_node("bulletContainer").get_child(i).queue_free()
+			canShoot = false
+
 	updateStats()
 
 
-func Shoot():
+func find_target() -> void:
+	var targets := rangeArea.get_overlapping_bodies()
+	var bestTarget: Node2D = null
+	var bestProgress := 0.0
+
+	for body in targets:
+		if not body.is_in_group("enemy"):
+			continue
+
+		if not is_instance_valid(body):
+			continue
+
+		if body.is_queued_for_deletion():
+			continue
+
+		var pathFollow = body.get_parent()
+
+		if not pathFollow is PathFollow2D:
+			continue
+
+		var progress = pathFollow.progress
+
+		if bestTarget == null:
+			bestTarget = body
+			bestProgress = progress
+			continue
+
+		if priorityTarget == targetTypes.FIRST:
+			# FIRST = farthest along the path
+			if progress > bestProgress:
+				bestTarget = body
+				bestProgress = progress
+
+		else:
+			# LAST = furthest back on the path
+			if progress < bestProgress:
+				bestTarget = body
+				bestProgress = progress
+
+	curr = bestTarget
+
+
+func Shoot() -> void:
+
+	if not is_instance_valid(curr):
+		return
+
+	if curr.is_queued_for_deletion():
+		return
+
 	var tempShot = bulletType.instantiate()
-	tempShot.pathName = pathName
+	tempShot.target = curr
+
 	tempShot.bulletDamage = damage
-	get_node("bulletContainer").add_child(tempShot)
+
+	get_tree().current_scene.add_child(tempShot)
 	tempShot.global_position = aimMark.global_position
 
-func updateStats():
+
+func updateStats() -> void:
 	pass
 
 
-
 func _on_range_area_body_entered(body: Node2D) -> void:
-	if body.is_class("Enemy"):
-		var tempArr = []
-		currTargets = get_node("rangeArea").get_overlapping_bodies()
-		for i in currTargets:
-			if i.is_class("Enemy"):
-				tempArr.append(i)
-		
-		var currTarget = null
-		
-		for i in tempArr:
-			if currTarget == null:
-				currTarget = i.get_node("../")
-			else:
-				if priorityTarget == targetTypes.FIRST:
-					if i.get_parent().get_progress() > currTarget.get_progress():
-						currTarget = i.get_node("../")
-				else:
-					if i.get_parent().get_progress() < currTarget.get_progress():
-						currTarget = i.get_node("../")
-				curr = currTarget
-				pathName = currTarget.get_parent().name
 
-func upgradeStats():
+	if body.is_in_group("enemy"):
+		find_target()
+
+
+func _on_range_area_body_exited(body: Node2D) -> void:
+
+	if body == curr:
+		curr = null
+		find_target()
+
+
+func upgradeStats() -> void:
+
 	level += 1
 	targetRange *= 1.5
 	damage *= 2
 	shotSpeed *= 2
 
-func _on_range_area_body_exited(body: Node2D) -> void:
-	currTargets = get_node("rangeArea").get_overlapping_bodies()
-	
+	rangeCollider.shape.set_deferred("radius", targetRange)
+	shotTimer.wait_time = 1.0 / shotSpeed
 
 
-func _on_tower_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_tower_area_input_event(viewport: Node,event: InputEvent,shape_idx: int) -> void:
+
 	if event is InputEventMouseButton and event.button_mask == 1:
 		upgradeMenu.show()
-
+	
 
 func _on_upgrade_button_pressed() -> void:
+	rangeDisplay.show()
 	if GlobalScript.playerCash >= currUpgradeCost:
+
 		GlobalScript.playerCash -= currUpgradeCost
 		currUpgradeCost *= 2
+
 		upgradeStats()
-		
+
+
+func _on_shot_timer_timeout() -> void:
+
+	canShoot = true

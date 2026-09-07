@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_ndpwd"]
 [ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="2_tghyl"]
 [ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="3_tghyl"]
+[ext_resource type="Texture2D" uid="uid://ohh2poejmtu7" path="res://Assets/Sprites/icons/32x32/pearl_01a.png" id="4_ou3m2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 25.0
@@ -12,6 +13,7 @@ size = Vector2(10, 10)
 
 [node name="Tower" type="StaticBody2D" unique_id=112576211]
 texture_filter = 1
+scale = Vector2(4, 4)
 script = ExtResource("1_ndpwd")
 
 [node name="towerSprite" type="Sprite2D" parent="." unique_id=601306373]
@@ -27,15 +29,16 @@ shape = SubResource("CircleShape2D_g4v7s")
 debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
 
 [node name="shotTimer" type="Timer" parent="." unique_id=47392313]
+autostart = true
 
-[node name="bulletContainer" type="Node" parent="." unique_id=318312679]
+[node name="bulletContainer" type="Node2D" parent="." unique_id=1784054157]
 
 [node name="aimMark" type="Marker2D" parent="." unique_id=768596189]
-position = Vector2(24, 0)
+position = Vector2(5, 0)
 
 [node name="upgradeMenu" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
-visible = false
 texture_filter = 1
+scale = Vector2(1, 1)
 
 [node name="towerArea" type="Area2D" parent="." unique_id=633552855]
 
@@ -45,8 +48,12 @@ shape = SubResource("RectangleShape2D_g4v7s")
 [node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=1709228505]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1757614805]
+[node name="rangeDisplay" type="Sprite2D" parent="." unique_id=152588590]
+visible = false
+texture_filter = 1
+texture = ExtResource("4_ou3m2")
 
+[connection signal="timeout" from="shotTimer" to="." method="_on_shot_timer_timeout"]
 [connection signal="pressed" from="upgradeMenu/upgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="input_event" from="towerArea" to="." method="_on_tower_area_input_event"]
 

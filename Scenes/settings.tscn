@@ -1,14 +1,107 @@
 [gd_scene format=3 uid="uid://bjgdvilytu6d3"]
 
-[ext_resource type="Texture2D" uid="uid://bumh5if4xovdf" path="res://Assets/icon.svg" id="1_4geyq"]
+[ext_resource type="Texture2D" uid="uid://kdunfaumjykw" path="res://Assets/GUI/Buttons/volumeBack.png" id="1_i44u3"]
+[ext_resource type="Script" uid="uid://bndlt4l5y3lei" path="res://Globals/settings.gd" id="1_j2dne"]
+[ext_resource type="Texture2D" uid="uid://dpjetvikrqrj4" path="res://Assets/GUI/Buttons/musicIcon.png" id="2_6kysc"]
+[ext_resource type="Texture2D" uid="uid://bxy8d1k62w14f" path="res://Assets/GUI/Buttons/settingsBg.png" id="2_6vr2p"]
+[ext_resource type="Texture2D" uid="uid://di6go8qgbdlen" path="res://Assets/GUI/Buttons/volumeTop.png" id="2_lhmql"]
+[ext_resource type="Texture2D" uid="uid://75uv3nty5e08" path="res://Assets/GUI/Buttons/sfxIcon.png" id="3_6vr2p"]
 
 [node name="Settings" type="Control" unique_id=1755028584]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j2dne")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=35666698]
-texture = ExtResource("1_4geyq")
+[node name="background" type="TextureRect" parent="." unique_id=744839753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6vr2p")
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="background" unique_id=897725404]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -405.0
+offset_right = 132.0
+offset_bottom = -202.5
+grow_vertical = 2
+scale = Vector2(4, 4)
+alignment = 1
+
+[node name="icon" type="VBoxContainer" parent="background/HBoxContainer" unique_id=2079658720]
+layout_mode = 2
+alignment = 1
+
+[node name="sfxIcon" type="TextureRect" parent="background/HBoxContainer/icon" unique_id=1358038687]
+visible = false
+layout_mode = 2
+texture = ExtResource("3_6vr2p")
+
+[node name="musicIcon" type="TextureRect" parent="background/HBoxContainer/icon" unique_id=1633829662]
+layout_mode = 2
+texture = ExtResource("2_6kysc")
+
+[node name="bars" type="VBoxContainer" parent="background/HBoxContainer" unique_id=1856727988]
+layout_mode = 2
+alignment = 1
+
+[node name="sfx" type="TextureProgressBar" parent="background/HBoxContainer/bars" unique_id=277449231]
+visible = false
+layout_mode = 2
+max_value = 20.0
+value = 1.0
+texture_under = ExtResource("1_i44u3")
+texture_progress = ExtResource("2_lhmql")
+
+[node name="sfxSlider" type="HSlider" parent="background/HBoxContainer/bars/sfx" unique_id=54176174]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 0.5
+offset_top = -1.5
+offset_right = 63.5
+offset_bottom = 14.5
+max_value = 20.0
+value = 1.0
+tick_count = 20
+ticks_position = 3
+
+[node name="music" type="TextureProgressBar" parent="background/HBoxContainer/bars" unique_id=1348906612]
+layout_mode = 2
+max_value = 20.0
+value = 1.0
+rounded = true
+texture_under = ExtResource("1_i44u3")
+texture_progress = ExtResource("2_lhmql")
+
+[node name="musicSlider" type="HSlider" parent="background/HBoxContainer/bars/music" unique_id=657976917]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 0.5
+offset_top = -1.5
+offset_right = 63.5
+offset_bottom = 14.5
+max_value = 20.0
+value = 1.0
+tick_count = 20
+ticks_position = 3
+
+[node name="close" type="Button" parent="." unique_id=1235482118]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 11.0
+offset_right = 509.0
+offset_bottom = 55.0
+flat = true
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

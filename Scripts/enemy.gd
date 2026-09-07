@@ -4,7 +4,7 @@ class_name Enemy
 
 @export_group("Stats")
 
-@export var health:= 10
+@export var health:= 5
 @export var speed := 50
 @export var damage := 1
 
@@ -25,8 +25,12 @@ func _process(delta: float) -> void:
 	path.progress += speed * delta * GlobalScript.speedMult
 	if path.progress_ratio >= FinishRatio:
 		damagePlayer()
-		
+	if health <= 0:
+		die()
 		
 func damagePlayer():
 	GlobalScript.takeDamage(damage)
+	queue_free()
+
+func die():
 	queue_free()

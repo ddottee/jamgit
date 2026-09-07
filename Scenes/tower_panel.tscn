@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cblf1x3nbxw0o"]
+
+[node name="TowerPanel" type="Panel" unique_id=1868235887]
+
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=783529064]
+
+[node name="PriceLabel" type="Label" parent="towerSprite" unique_id=615576176]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="cashIcon" type="Sprite2D" parent="towerSprite/PriceLabel" unique_id=1406216434]

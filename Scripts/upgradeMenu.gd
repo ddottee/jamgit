@@ -16,7 +16,7 @@ extends Panel
 
 func _ready() -> void:
 	closeButton.connect("button_down", close)
-	self.scale = Vector2(2.5,2.5)
+	#self.scale = Vector2(2.5,2.5)
 func close():
 	hide()
 	

@@ -19,12 +19,18 @@ config/icon="res://Assets/icon.svg"
 
 SignalBus="*uid://dy2jpvfcbja6n"
 GlobalScript="*uid://cpsj07cgmvprk"
+MusicHandler="*uid://dhicigluryh05"
+Settings="*uid://bjgdvilytu6d3"
 
 [display]
 
 window/size/viewport_width=1440
 window/size/viewport_height=810
 window/stretch/mode="viewport"
+
+[global_group]
+
+enemy=""
 
 [physics]
 
