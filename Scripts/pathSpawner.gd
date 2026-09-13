@@ -13,11 +13,14 @@ func _ready():
 	enemyTimer.start(GlobalScript.enemyDelay + offsetDelay)
 	enemyTimer.autostart = false
 
-
+func _process(delta: float) -> void:
+	if GlobalScript.hasWon:
+		if !has_node("waveTimer"):
+			
 func _on_enemy_timer_timeout() -> void:
 	enemyTimer.start(GlobalScript.enemyDelay)
 	enemyTimer.autostart = true
-	if levelEnemies >= 0:
+	if levelEnemies >= 0 or GlobalScript.hasWon:
 		var temp = path.instantiate()
 		add_child(temp)
 		levelEnemies -= 1

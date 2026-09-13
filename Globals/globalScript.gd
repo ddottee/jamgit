@@ -17,16 +17,19 @@ enum gameStates {MENU, PAUSE, PLAY, SHOP, WIN, LOSE}
 @export var building := false
 @export var musicVol = 1.0
 @export var sfxVol = 1.0
+@export var towerNumber : int = 0
 
 @export_group("Level Data")
 
 @export var enemyDelay := 1.0
 
+@export var enemies = 20
 
-
+var hasWon = false
 func _process(delta: float) -> void:
 	AudioServer.set_bus_volume_linear(0, musicVol)
-
+	if enemies <= 0 and !hasWon:
+		playerWin()
 
 
 
@@ -51,9 +54,16 @@ func pauseGame():
 func playerLose():
 	SignalBus.playerLose.emit()
 	GlobalScript.gameState = GlobalScript.gameStates.LOSE
+	get_tree().change_scene_to_file("res://Scenes/lose")
+	get_tree().paused = true
+	
 	
 func playerWin():
 	SignalBus.playerWin.emit()
-	GlobalScript.gameState = GlobalScript.gameStates.WIN
+	hasWon = true
+	GlobalScript.gameState = GlobalScript.gameStates.PAUSE
+	var temp = load("res://Scenes/win.tscn")
+	get_tree().add_child(temp)
+	get_tree().paused = true
 
 	

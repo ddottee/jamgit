@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://drntr81k8vfbs"]
+
+[ext_resource type="Script" uid="uid://bek35po0q1prb" path="res://Scripts/bullet.gd" id="1_0nhf4"]
+[ext_resource type="Texture2D" uid="uid://bke4qlkdys13y" path="res://Assets/Sprites/Towers/towerAssets/candy.png" id="2_0nhf4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nhf4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ve55i"]
+
+[node name="candy" type="CharacterBody2D" unique_id=766564736]
+script = ExtResource("1_0nhf4")
+
+[node name="bulletSprite" type="Sprite2D" parent="." unique_id=79200614]
+texture_filter = 1
+texture = ExtResource("2_0nhf4")
+
+[node name="Collision" type="Area2D" parent="." unique_id=1127125909]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1910520650]
+texture_filter = 1
+shape = SubResource("CircleShape2D_0nhf4")
+
+[node name="centerCollider" type="Area2D" parent="." unique_id=1337907518]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="centerCollider" unique_id=168481514]
+texture_filter = 1
+shape = SubResource("CircleShape2D_ve55i")

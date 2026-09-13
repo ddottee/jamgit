@@ -93,6 +93,7 @@ texture_pressed = ExtResource("10_dpqm7")
 stretch_mode = 0
 
 [node name="towerIcon" type="Sprite2D" parent="." unique_id=760862642]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(32, 41.000004)
 scale = Vector2(1.25, 1.25)
@@ -100,6 +101,7 @@ texture = ExtResource("5_wucqn")
 vframes = 4
 
 [node name="nameplate" type="Label" parent="." unique_id=292597232]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 0
 offset_left = 59.0

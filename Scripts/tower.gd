@@ -14,8 +14,10 @@ class_name Tower
 @onready var speedNum: Label = $upgradeMenu/speedNum
 @onready var upgradeButton: TextureButton = $upgradeMenu/upgradeBar/upgradeButton
 @onready var costLabel: Label = $upgradeMenu/upgradeBar/costLabel
+@onready var nameplate: Label = $upgradeMenu/nameplate
+@onready var tower_area: Area2D = $towerArea
 
-
+@export var towerType = "Default"
 
 enum targetTypes { FIRST, LAST }
 
@@ -23,9 +25,9 @@ enum targetTypes { FIRST, LAST }
 
 @export var level := 1
 @export var damage := 1
-@export var bulletType: PackedScene = preload("res://Scenes/bullet.tscn")
+@export var bulletType: PackedScene = preload("res://Scenes/bullets/candy.tscn")
 @export var targetRange := 100
-@export var shotSpeed := 1
+@export var shotSpeed := 3
 
 @export_group("Behavior")
 
@@ -34,7 +36,7 @@ enum targetTypes { FIRST, LAST }
 
 @export_group("Costs")
 
-@export var cost := 1
+@export var cost := 5
 @export var upgradeCost := 2
 
 var currUpgradeCost := upgradeCost
@@ -46,6 +48,10 @@ var canShoot := false
 
 
 func _ready() -> void:
+	self.scale = Vector2(4,4)
+	rangeArea.monitoring = true
+	shotTimer.timeout.connect(_on_shot_timer_timeout)
+	tower_area.input_event.connect(_on_tower_area_input_event)
 	upgradeButton.pressed.connect(_on_upgrade_button_pressed)
 	rangeArea.body_entered.connect(_on_range_area_body_entered)
 	rangeArea.body_exited.connect(_on_range_area_body_exited)
@@ -56,7 +62,7 @@ func _ready() -> void:
 
 	upgradeMenu.hide()
 
-	shotTimer.wait_time = 1.0 / shotSpeed
+	shotTimer.wait_time = 3.0 / shotSpeed
 
 
 func _process(delta: float) -> void:
@@ -85,6 +91,7 @@ func _process(delta: float) -> void:
 		aimMark.global_position = global_position + direction
 
 		if canShoot:
+			print("shoot")
 			Shoot()
 			canShoot = false
 
@@ -151,6 +158,7 @@ func Shoot() -> void:
 
 
 func updateStats() -> void:
+	nameplate.text = towerType
 	damageNum.text = str(damage)
 	speedNum.text = str(shotSpeed)
 	rangeNum.text = str(targetRange)

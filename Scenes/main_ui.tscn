@@ -7,6 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://htx7dyhspa7w" path="res://Assets/GUI/Buttons/playButton.png" id="5_7okpu"]
 [ext_resource type="Texture2D" uid="uid://dul6mdlwjka86" path="res://Assets/GUI/Buttons/pauseButton.png" id="6_ylo01"]
 [ext_resource type="Texture2D" uid="uid://bmigggcxno7we" path="res://Assets/Sprites/icons/speedIcon.png" id="7_ylo01"]
+[ext_resource type="Texture2D" uid="uid://8jnsc52moul7" path="res://Assets/GUI/towerShopButton.png" id="8_bhqku"]
+[ext_resource type="Texture2D" uid="uid://ba41660ss1aau" path="res://Assets/GUI/towerShop.png" id="9_qnjnk"]
+[ext_resource type="Texture2D" uid="uid://bidhu7ffcomv6" path="res://Assets/GUI/towerShopCloseButton.png" id="10_0j338"]
+[ext_resource type="Texture2D" uid="uid://hxrsxaku35" path="res://Assets/GUI/athleteFront.png" id="11_xcuso"]
+[ext_resource type="Texture2D" uid="uid://b7yqbij4n2tcw" path="res://Assets/GUI/bullyFront.png" id="12_7icxx"]
+[ext_resource type="Texture2D" uid="uid://b60yiqn0bxess" path="res://Assets/GUI/defaultFront.png" id="13_mq6me"]
+[ext_resource type="Texture2D" uid="uid://7mhvq0o5w3l0" path="res://Assets/GUI/razorbladeFront.png" id="14_e4l54"]
+[ext_resource type="Texture2D" uid="uid://bt15nj8l274pp" path="res://Assets/GUI/richFront.png" id="15_onket"]
+[ext_resource type="Texture2D" uid="uid://cqknxep6i2pl5" path="res://Assets/GUI/stinkyFront.png" id="16_vu3sk"]
 
 [node name="mainUI" type="CanvasLayer" unique_id=479822321]
 process_mode = 3
@@ -134,5 +143,207 @@ vertical_alignment = 1
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="shopRect" type="TextureRect" parent="." unique_id=471348305]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1405.0
+offset_top = -298.5
+offset_right = 1503.0
+offset_bottom = -149.5
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = ExtResource("9_qnjnk")
+
+[node name="shopButton" type="TextureButton" parent="shopRect" unique_id=969474070]
+top_level = true
+texture_filter = 1
+layout_mode = 1
+offset_left = 1411.23
+offset_top = 386.0
+offset_right = 1421.23
+offset_bottom = 423.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-28, 0)
+offset_transform_scale = Vector2(4, 4)
+offset_transform_visual_only = false
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("10_0j338")
+texture_pressed = ExtResource("8_bhqku")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="shopRect" unique_id=632760414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 14.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="row1" type="HBoxContainer" parent="shopRect/VBoxContainer" unique_id=337246834]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="default" type="TextureRect" parent="shopRect/VBoxContainer/row1" unique_id=968887584]
+layout_mode = 2
+texture = ExtResource("13_mq6me")
+stretch_mode = 5
+
+[node name="defaultButton" type="Button" parent="shopRect/VBoxContainer/row1/default" unique_id=317810613]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="athlete" type="TextureRect" parent="shopRect/VBoxContainer/row1" unique_id=1196422460]
+layout_mode = 2
+texture = ExtResource("11_xcuso")
+stretch_mode = 5
+
+[node name="athleteButton" type="Button" parent="shopRect/VBoxContainer/row1/athlete" unique_id=909901016]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="row2" type="HBoxContainer" parent="shopRect/VBoxContainer" unique_id=1898216745]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="bully" type="TextureRect" parent="shopRect/VBoxContainer/row2" unique_id=1186443458]
+layout_mode = 2
+texture = ExtResource("12_7icxx")
+stretch_mode = 5
+
+[node name="bullyButton" type="Button" parent="shopRect/VBoxContainer/row2/bully" unique_id=549401724]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="razorblade" type="TextureRect" parent="shopRect/VBoxContainer/row2" unique_id=72736712]
+visible = false
+layout_mode = 2
+texture = ExtResource("14_e4l54")
+stretch_mode = 5
+
+[node name="razorbladeButton" type="Button" parent="shopRect/VBoxContainer/row2/razorblade" unique_id=1299055794]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="row3" type="HBoxContainer" parent="shopRect/VBoxContainer" unique_id=941604079]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="rich" type="TextureRect" parent="shopRect/VBoxContainer/row3" unique_id=605493165]
+layout_mode = 2
+texture = ExtResource("15_onket")
+stretch_mode = 5
+
+[node name="richButton" type="Button" parent="shopRect/VBoxContainer/row3/rich" unique_id=1069380790]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="stinky" type="TextureRect" parent="shopRect/VBoxContainer/row3" unique_id=38857021]
+layout_mode = 2
+texture = ExtResource("16_vu3sk")
+stretch_mode = 5
+
+[node name="stinkyButton" type="Button" parent="shopRect/VBoxContainer/row3/stinky" unique_id=1301787337]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="priceRow" type="HBoxContainer" parent="shopRect/VBoxContainer" unique_id=1797349547]
+texture_filter = 1
+layout_mode = 2
+offset_transform_scale = Vector2(0.375, 0.375)
+offset_transform_visual_only = false
+alignment = 1
+
+[node name="coinIcon" type="TextureRect" parent="shopRect/VBoxContainer/priceRow" unique_id=1168219891]
+layout_mode = 2
+texture = ExtResource("2_f28it")
+expand_mode = 2
+
+[node name="priceLabel" type="Label" parent="shopRect/VBoxContainer/priceRow" unique_id=733004961]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "5 per tower"
+
+[node name="Label" type="Label" parent="shopRect" unique_id=1071077241]
+layout_mode = 1
+offset_right = 96.5
+offset_bottom = 15.0
+text = "Only 10!
+
+
+
+"
+horizontal_alignment = 1
+
+[node name="Choose W" type="Label" parent="shopRect" unique_id=1899384951]
+layout_mode = 1
+offset_left = -13.75
+offset_top = 136.375
+offset_right = 118.25
+offset_bottom = 151.375
+theme_override_font_sizes/font_size = 10
+text = "Choose wisely."
+horizontal_alignment = 1
+
+[node name="shopMarker" type="Control" parent="." unique_id=1378974031]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1405.0
+offset_top = -298.5
+offset_right = 1405.0
+offset_bottom = -298.5
+grow_vertical = 2
+
 [connection signal="pressed" from="VBoxContainer/bottomUIHbox/pausePlay" to="." method="togglePause"]
 [connection signal="pressed" from="VBoxContainer/bottomUIHbox/speedup" to="." method="speedUp"]
+[connection signal="pressed" from="shopRect/shopButton" to="." method="_on_shop_button_pressed"]

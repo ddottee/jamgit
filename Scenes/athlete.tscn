@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bnsqyrqor0col"]
-
-[ext_resource type="Script" uid="uid://byqlb2gwcwv6g" path="res://Scripts/athlete.gd" id="1_vngve"]
-
-[node name="athlete" type="CharacterBody2D" unique_id=566495150]
-script = ExtResource("1_vngve")

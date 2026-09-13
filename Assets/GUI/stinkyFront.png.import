@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ykummfll4427"
-path="res://.godot/imported/shard_01e.png-4ae4896d13d316c4a20ba827046e2115.ctex"
+uid="uid://cqknxep6i2pl5"
+path="res://.godot/imported/stinkyFront.png-2aaf3c56515aaa46369da5643eccebb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/icons/32x32/shard_01e.png"
-dest_files=["res://.godot/imported/shard_01e.png-4ae4896d13d316c4a20ba827046e2115.ctex"]
+source_file="res://Assets/GUI/stinkyFront.png"
+dest_files=["res://.godot/imported/stinkyFront.png-2aaf3c56515aaa46369da5643eccebb4.ctex"]
 
 [params]
 

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Bullet
+
 @onready var bulletSprite: Sprite2D = $bulletSprite
 
 @onready var collision: Area2D = $Collision
@@ -7,13 +7,15 @@ class_name Bullet
 
 var target : Node2D = null
 var pathName = ""
+@export var bulletTexture : CompressedTexture2D
 @export_group("Stats")
 @export var speed := 1000
 @export var bulletDamage := 2
 @export var inAir := false
+@export var textu = preload("uid://c1yio0gy2svq0")
 func _ready() -> void:
-	collision.connect("body_entered", _on_collision_body_entered)
-	centerCollider.connect("body_entered", _on_center_collider_body_entered)
+	if bulletSprite:
+		bulletSprite.texture = bulletTexture
 	
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target) or target.is_queued_for_deletion():

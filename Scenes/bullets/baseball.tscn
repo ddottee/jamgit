@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c5wvy15d6chfm"]
+
+[ext_resource type="Script" uid="uid://bek35po0q1prb" path="res://Scripts/bullet.gd" id="1_cbxsg"]
+[ext_resource type="Texture2D" uid="uid://odvoa8wx4dth" path="res://Assets/Sprites/Towers/towerAssets/baseball.png" id="2_cbxsg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0by4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37i5x"]
+
+[node name="baseball" type="CharacterBody2D" unique_id=66205997]
+script = ExtResource("1_cbxsg")
+speed = 2000
+bulletDamage = 3
+
+[node name="bulletSprite" type="Sprite2D" parent="." unique_id=973622796]
+texture_filter = 1
+texture = ExtResource("2_cbxsg")
+
+[node name="Collision" type="Area2D" parent="." unique_id=677957532]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1004006569]
+shape = SubResource("CircleShape2D_s0by4")
+
+[node name="centerCollider" type="Area2D" parent="." unique_id=1775640501]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="centerCollider" unique_id=2013141104]
+shape = SubResource("CircleShape2D_37i5x")

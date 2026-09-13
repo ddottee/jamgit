@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bnsqyrqor0col"]
+
+[ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_3twxc"]
+[ext_resource type="Texture2D" uid="uid://c1yio0gy2svq0" path="res://Assets/Sprites/Towers/athleteTower.png" id="2_bu73h"]
+[ext_resource type="PackedScene" uid="uid://c5wvy15d6chfm" path="res://Scenes/bullets/baseball.tscn" id="2_fyii3"]
+[ext_resource type="Texture2D" uid="uid://ohh2poejmtu7" path="res://Assets/Sprites/icons/32x32/pearl_01a.png" id="3_bvobh"]
+[ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="4_fyii3"]
+[ext_resource type="Texture2D" uid="uid://hxrsxaku35" path="res://Assets/GUI/athleteFront.png" id="5_bvobh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nyci2"]
+radius = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc1rc"]
+size = Vector2(10, 10)
+
+[node name="athlete" type="StaticBody2D" unique_id=448723408]
+texture_filter = 1
+script = ExtResource("1_3twxc")
+towerType = "Athlete"
+damage = 3
+bulletType = ExtResource("2_fyii3")
+shotSpeed = 5
+
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=2068300267]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_bu73h")
+vframes = 4
+
+[node name="rangeArea" type="Area2D" parent="." unique_id=1586564313]
+
+[node name="rangeCollider" type="CollisionShape2D" parent="rangeArea" unique_id=870883747]
+shape = SubResource("CircleShape2D_nyci2")
+debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
+
+[node name="shotTimer" type="Timer" parent="." unique_id=526710085]
+autostart = true
+
+[node name="bulletContainer" type="Node2D" parent="." unique_id=608206155]
+
+[node name="aimMark" type="Marker2D" parent="." unique_id=388304955]
+position = Vector2(5, 0)
+
+[node name="towerArea" type="Area2D" parent="." unique_id=1383562519]
+
+[node name="towerCollider" type="CollisionShape2D" parent="towerArea" unique_id=238116022]
+shape = SubResource("RectangleShape2D_mc1rc")
+
+[node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=1727067943]
+shape = SubResource("RectangleShape2D_mc1rc")
+
+[node name="rangeDisplay" type="Sprite2D" parent="." unique_id=1253911009]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_bvobh")
+
+[node name="upgradeMenu" parent="." unique_id=1949348179 instance=ExtResource("4_fyii3")]
+scale = Vector2(0.5, 0.5)
+
+[node name="towerIcon" parent="upgradeMenu" index="4" unique_id=760862642]
+texture = ExtResource("5_bvobh")
+vframes = 1
+
+[editable path="upgradeMenu"]

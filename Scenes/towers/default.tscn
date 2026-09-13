@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cv36dnk4r4ded"]
+
+[ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_sull6"]
+[ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="2_1p2ah"]
+[ext_resource type="Texture2D" uid="uid://ohh2poejmtu7" path="res://Assets/Sprites/icons/32x32/pearl_01a.png" id="3_copwi"]
+[ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="4_gh1tm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6wiwp"]
+radius = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33rrd"]
+size = Vector2(10, 10)
+
+[node name="default" type="StaticBody2D" unique_id=330409381]
+texture_filter = 1
+script = ExtResource("1_sull6")
+
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=1626373018]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1p2ah")
+vframes = 4
+
+[node name="rangeArea" type="Area2D" parent="." unique_id=301750331]
+
+[node name="rangeCollider" type="CollisionShape2D" parent="rangeArea" unique_id=1524613279]
+shape = SubResource("CircleShape2D_6wiwp")
+debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
+
+[node name="shotTimer" type="Timer" parent="." unique_id=1729810238]
+autostart = true
+
+[node name="bulletContainer" type="Node2D" parent="." unique_id=691023897]
+
+[node name="aimMark" type="Marker2D" parent="." unique_id=718792000]
+position = Vector2(5, 0)
+
+[node name="towerArea" type="Area2D" parent="." unique_id=206378222]
+
+[node name="towerCollider" type="CollisionShape2D" parent="towerArea" unique_id=347217759]
+shape = SubResource("RectangleShape2D_33rrd")
+
+[node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=2103167976]
+shape = SubResource("RectangleShape2D_33rrd")
+
+[node name="rangeDisplay" type="Sprite2D" parent="." unique_id=1070201813]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_copwi")
+
+[node name="upgradeMenu" parent="." unique_id=1949348179 instance=ExtResource("4_gh1tm")]
+scale = Vector2(0.5, 0.5)
+
+[editable path="upgradeMenu"]

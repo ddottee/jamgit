@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://y06eeufs1h8r" path="res://Assets/tilesets/undead/Tiled_files/details.png" id="8_tgw3l"]
 [ext_resource type="Texture2D" uid="uid://cjv4yfe6jb02k" path="res://Assets/tilesets/path and road/PNG_Tiled/grassTileYello.png" id="8_yb7v2"]
 [ext_resource type="Texture2D" uid="uid://b0u18a6ihb1g8" path="res://Assets/tilesets/undead/Tiled_files/Objects.png" id="9_yb7v2"]
-[ext_resource type="PackedScene" uid="uid://01douy3fo7t8" path="res://Scenes/tower.tscn" id="13_62atx"]
 [ext_resource type="PackedScene" uid="uid://bdf04o6tn4ag4" path="res://Scenes/main_ui.tscn" id="14_el6qx"]
 [ext_resource type="PackedScene" uid="uid://dr6pbkjgtd7v0" path="res://Scenes/path_1b.tscn" id="14_wi0ml"]
 
@@ -9326,6 +9325,3 @@ environment = SubResource("Environment_g4v7s")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="level/WorldEnvironment" unique_id=510764782]
 color = Color(0.9276271, 0.83886033, 0.81420016, 1)
-
-[node name="Tower" parent="level" unique_id=112576211 instance=ExtResource("13_62atx")]
-position = Vector2(665, 368)

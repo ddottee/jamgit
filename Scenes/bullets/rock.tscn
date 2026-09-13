@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dybc5nggjea4y"]
+
+[ext_resource type="Script" uid="uid://bek35po0q1prb" path="res://Scripts/bullet.gd" id="1_if4ia"]
+[ext_resource type="Texture2D" uid="uid://c63mukrijqo8u" path="res://Assets/Sprites/Towers/towerAssets/a-retro-styled-pixel-art-illustration-of-a-sharp-gray-rock-with-many-edges-and-bumps-png.png" id="2_if4ia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdhvo"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsjqh"]
+
+[node name="rock" type="CharacterBody2D" unique_id=1254498487]
+script = ExtResource("1_if4ia")
+speed = 600
+bulletDamage = 15
+
+[node name="bulletSprite" type="Sprite2D" parent="." unique_id=1135706508]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_if4ia")
+
+[node name="Collision" type="Area2D" parent="." unique_id=439107285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1547806414]
+shape = SubResource("CircleShape2D_pdhvo")
+
+[node name="centerCollider" type="Area2D" parent="." unique_id=1950746598]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="centerCollider" unique_id=1635816175]
+shape = SubResource("CircleShape2D_rsjqh")

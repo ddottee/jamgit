@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://pp13wivkhlfj"]
+
+[ext_resource type="Script" uid="uid://100cd3xxnird" path="res://Scripts/towerPlacing.gd" id="1_7gdxi"]
+
+[node name="towerPlacing" type="Node2D" unique_id=222267044]
+script = ExtResource("1_7gdxi")

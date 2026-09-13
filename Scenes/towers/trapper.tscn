@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8mwblu1amyky"]
+
+[ext_resource type="Script" uid="uid://dplicarxum2p8" path="res://Scripts/bully.gd" id="1_mejs4"]
+
+[node name="trapper" type="CharacterBody2D" unique_id=1513662121]
+script = ExtResource("1_mejs4")

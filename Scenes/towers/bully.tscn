@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dynn8euen5aty"]
+
+[ext_resource type="Script" uid="uid://bun044r1qbfq0" path="res://Scripts/tower.gd" id="1_e7ot5"]
+[ext_resource type="Texture2D" uid="uid://bd08te3t3i84l" path="res://Assets/Sprites/Towers/bullyTower.png" id="2_e7ot5"]
+[ext_resource type="PackedScene" uid="uid://dybc5nggjea4y" path="res://Scenes/bullets/rock.tscn" id="2_ij1m6"]
+[ext_resource type="Texture2D" uid="uid://ohh2poejmtu7" path="res://Assets/Sprites/icons/32x32/pearl_01a.png" id="3_cdf56"]
+[ext_resource type="PackedScene" uid="uid://ce6e6yx6wrc51" path="res://Scenes/upgradeMenu.tscn" id="4_ij1m6"]
+[ext_resource type="Texture2D" uid="uid://b7yqbij4n2tcw" path="res://Assets/GUI/bullyFront.png" id="5_cdf56"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1bw6"]
+radius = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3lj4"]
+size = Vector2(10, 10)
+
+[node name="bully" type="StaticBody2D" unique_id=1853038800]
+texture_filter = 1
+script = ExtResource("1_e7ot5")
+towerType = "Bully"
+damage = 15
+bulletType = ExtResource("2_ij1m6")
+targetRange = 30
+
+[node name="towerSprite" type="Sprite2D" parent="." unique_id=1115901237]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_e7ot5")
+vframes = 4
+
+[node name="rangeArea" type="Area2D" parent="." unique_id=170371213]
+
+[node name="rangeCollider" type="CollisionShape2D" parent="rangeArea" unique_id=1690221151]
+shape = SubResource("CircleShape2D_g1bw6")
+debug_color = Color(0.9734828, 0, 0.43704465, 0.41960785)
+
+[node name="shotTimer" type="Timer" parent="." unique_id=58264066]
+autostart = true
+
+[node name="bulletContainer" type="Node2D" parent="." unique_id=822978918]
+
+[node name="aimMark" type="Marker2D" parent="." unique_id=1750923581]
+position = Vector2(5, 0)
+
+[node name="towerArea" type="Area2D" parent="." unique_id=53982818]
+
+[node name="towerCollider" type="CollisionShape2D" parent="towerArea" unique_id=208464694]
+shape = SubResource("RectangleShape2D_t3lj4")
+
+[node name="towerColliderBase" type="CollisionShape2D" parent="." unique_id=512316955]
+shape = SubResource("RectangleShape2D_t3lj4")
+
+[node name="rangeDisplay" type="Sprite2D" parent="." unique_id=194346367]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_cdf56")
+
+[node name="upgradeMenu" parent="." unique_id=1949348179 instance=ExtResource("4_ij1m6")]
+scale = Vector2(0.5, 0.5)
+
+[node name="towerIcon" parent="upgradeMenu" index="4" unique_id=760862642]
+texture = ExtResource("5_cdf56")
+vframes = 1
+
+[editable path="upgradeMenu"]

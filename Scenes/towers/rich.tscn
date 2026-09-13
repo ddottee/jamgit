@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bona7vigaq0ya"]
+
+[ext_resource type="Script" uid="uid://dplicarxum2p8" path="res://Scripts/bully.gd" id="1_2ivfs"]
+
+[node name="rich" type="CharacterBody2D" unique_id=1513662121]
+script = ExtResource("1_2ivfs")
