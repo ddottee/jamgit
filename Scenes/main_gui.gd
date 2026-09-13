@@ -1,8 +1,8 @@
 extends Control
 
-@onready var settingsPath = preload("res://Scenes/settings.tscn")
-@onready var settings: TextureButton = $HBoxContainer/buttons/Settings
+@onready var credits: TextureRect = %credits
+@onready var menuButton: HBoxContainer = %mainMenuButtons
 
 func _ready() -> void:
-	var temp = settingsPath.instantiate()
-	settings.add_child(temp)
+	menuButton.show()
+	credits.hide()
