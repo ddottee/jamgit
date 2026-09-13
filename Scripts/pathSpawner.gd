@@ -9,6 +9,8 @@ func _ready():
 	self.position = get_parent().pathSpawnPos
 	enemyTimer.start(GlobalScript.enemyDelay)
 
+
+
 func _on_enemy_timer_timeout() -> void:
 		
 	if levelEnemies >= 0:

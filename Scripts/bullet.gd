@@ -23,7 +23,8 @@ func _physics_process(delta: float) -> void:
 	look_at(target_position)
 	move_and_slide()
 
-
+func _process(delta: float) -> void:
+	bulletSprite.rotate(delta * 15)
 
 func _on_center_collider_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
@@ -31,4 +32,6 @@ func _on_center_collider_body_entered(body: Node2D) -> void:
 
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
+		
 		body.health -= bulletDamage
+		

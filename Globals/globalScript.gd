@@ -14,7 +14,7 @@ enum gameStates {MENU, PAUSE, PLAY, SHOP, WIN, LOSE}
 
 @export var gameState := gameStates.MENU
 @export var speedMult := 1.0
-
+@export var building := false
 @export var musicVol = 1.0
 @export var sfxVol = 1.0
 
@@ -28,11 +28,21 @@ func _process(delta: float) -> void:
 	AudioServer.set_bus_volume_linear(0, musicVol)
 
 
+
+
+	
+		
+
+
+
 func takeDamage(damage):
+	SignalBus.damagePlayer.emit()
 	playerHealth -= damage
 	if playerHealth <= 0:
 		playerLose()
 
+func cancelBuildMode():
+	pass
 
 func pauseGame():
 	pass

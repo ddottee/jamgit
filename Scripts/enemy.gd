@@ -13,7 +13,7 @@ class_name Enemy
 
 
 @export var inAir := false
-@export var FinishRatio := 99.0
+@export var FinishRatio := .990
 
 
 @onready var path = get_parent()

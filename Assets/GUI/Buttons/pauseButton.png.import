@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://odvoa8wx4dth"
-path="res://.godot/imported/baseball.png-673d2729bc92cbe2ee2cf54b7409c165.ctex"
+uid="uid://dul6mdlwjka86"
+path="res://.godot/imported/pauseButton.png-0b766189b546302b02168a8b0813a391.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/baseball.png"
-dest_files=["res://.godot/imported/baseball.png-673d2729bc92cbe2ee2cf54b7409c165.ctex"]
+source_file="res://Assets/GUI/Buttons/pauseButton.png"
+dest_files=["res://.godot/imported/pauseButton.png-0b766189b546302b02168a8b0813a391.ctex"]
 
 [params]
 

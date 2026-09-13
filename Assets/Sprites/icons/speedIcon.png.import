@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bke4qlkdys13y"
-path="res://.godot/imported/candy.png-932baeea8506678f3d3d5037cc7a82d6.ctex"
+uid="uid://bmigggcxno7we"
+path="res://.godot/imported/speedIcon.png-7fb3166df747abad584eb96d0f2758cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/candy.png"
-dest_files=["res://.godot/imported/candy.png-932baeea8506678f3d3d5037cc7a82d6.ctex"]
+source_file="res://Assets/Sprites/icons/speedIcon.png"
+dest_files=["res://.godot/imported/speedIcon.png-7fb3166df747abad584eb96d0f2758cd.ctex"]
 
 [params]
 

@@ -20,7 +20,8 @@ config/icon="res://Assets/icon.svg"
 SignalBus="*uid://dy2jpvfcbja6n"
 GlobalScript="*uid://cpsj07cgmvprk"
 MusicHandler="*uid://dhicigluryh05"
-Settings="*uid://bjgdvilytu6d3"
+Settings="uid://bjgdvilytu6d3"
+TowerData="*uid://bskmw2kbe44ug"
 
 [display]
 
@@ -31,6 +32,10 @@ window/stretch/mode="viewport"
 [global_group]
 
 enemy=""
+
+[gui]
+
+theme/custom_font="uid://0p1k0iwekepn"
 
 [physics]
 

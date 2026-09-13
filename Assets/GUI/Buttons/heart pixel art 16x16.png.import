@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0jeyd6q0iy7"
-path="res://.godot/imported/bananaPeelApples.png-d19bc1d80409f55e2cb285a61293f998.ctex"
+uid="uid://bnnky6incegk"
+path="res://.godot/imported/heart pixel art 16x16.png-9a44f59afa8a59b1d18430c3ed80a05f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/bananaPeelApples.png"
-dest_files=["res://.godot/imported/bananaPeelApples.png-d19bc1d80409f55e2cb285a61293f998.ctex"]
+source_file="res://Assets/GUI/Buttons/heart pixel art 16x16.png"
+dest_files=["res://.godot/imported/heart pixel art 16x16.png-9a44f59afa8a59b1d18430c3ed80a05f.ctex"]
 
 [params]
 

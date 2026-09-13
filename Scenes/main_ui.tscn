@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://bdf04o6tn4ag4"]
+
+[ext_resource type="Script" uid="uid://do1cpfn3ol2xl" path="res://Scripts/mainUI.gd" id="1_gmh8u"]
+[ext_resource type="Texture2D" uid="uid://bopbso8arr53i" path="res://Assets/GUI/background.png" id="2_bhqku"]
+[ext_resource type="Texture2D" uid="uid://c23rfgegburnp" path="res://Assets/Sprites/icons/32x32/coin_05d.png" id="2_f28it"]
+[ext_resource type="Texture2D" uid="uid://b028we1vb7jyh" path="res://Assets/GUI/heart pixel art 32x32.png" id="3_dcbcb"]
+[ext_resource type="FontFile" uid="uid://0p1k0iwekepn" path="res://Assets/GUI/VCR_OSD_MONO_1.001.ttf" id="4_dcbcb"]
+[ext_resource type="Texture2D" uid="uid://htx7dyhspa7w" path="res://Assets/GUI/Buttons/playButton.png" id="5_7okpu"]
+[ext_resource type="Texture2D" uid="uid://dul6mdlwjka86" path="res://Assets/GUI/Buttons/pauseButton.png" id="6_ylo01"]
+[ext_resource type="Texture2D" uid="uid://bmigggcxno7we" path="res://Assets/Sprites/icons/speedIcon.png" id="7_ylo01"]
+
+[node name="mainUI" type="CanvasLayer" unique_id=479822321]
+process_mode = 3
+script = ExtResource("1_gmh8u")
+
+[node name="uiBackground" type="TextureRect" parent="." unique_id=905491097]
+texture_filter = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+texture = ExtResource("2_bhqku")
+expand_mode = 1
+
+[node name="topUIHbox" type="HBoxContainer" parent="." unique_id=1014911832]
+texture_filter = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 158.0
+offset_right = -532.667
+offset_bottom = 32.0
+grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+alignment = 1
+
+[node name="leftBuffer" type="Control" parent="topUIHbox" unique_id=625541905]
+layout_mode = 2
+
+[node name="cashIcon" type="TextureRect" parent="topUIHbox" unique_id=2147419495]
+layout_mode = 2
+texture = ExtResource("2_f28it")
+stretch_mode = 2
+
+[node name="playerCash" type="Label" parent="topUIHbox" unique_id=199822320]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="centerBuffer" type="Control" parent="topUIHbox" unique_id=225413383]
+layout_mode = 2
+
+[node name="healthIcon" type="TextureRect" parent="topUIHbox" unique_id=1257727298]
+layout_mode = 2
+texture = ExtResource("3_dcbcb")
+
+[node name="playerHealth" type="Label" parent="topUIHbox" unique_id=1142713048]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_dcbcb")
+text = "5"
+
+[node name="rightBuffer" type="Control" parent="topUIHbox" unique_id=509639160]
+layout_mode = 2
+offset_transform_pivot = Vector2(1.13, 0)
+offset_transform_visual_only = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=988488411]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=574732797]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="pauseLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=885328786]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "PAUSED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1405440885]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 270.0
+offset_top = -810.0
+offset_right = 356.0
+offset_bottom = -797.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(4, 4)
+
+[node name="bottomUIHbox" type="HBoxContainer" parent="VBoxContainer" unique_id=1280079890]
+texture_filter = 1
+layout_mode = 2
+offset_transform_visual_only = false
+alignment = 2
+
+[node name="pausePlay" type="TextureButton" parent="VBoxContainer/bottomUIHbox" unique_id=233768968]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_visual_only = false
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("5_7okpu")
+texture_pressed = ExtResource("6_ylo01")
+stretch_mode = 5
+
+[node name="speedup" type="TextureButton" parent="VBoxContainer/bottomUIHbox" unique_id=1670330582]
+unique_name_in_owner = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.8, 0.8)
+offset_transform_visual_only = false
+texture_normal = ExtResource("7_ylo01")
+stretch_mode = 5
+
+[node name="speedLabel" type="Label" parent="VBoxContainer/bottomUIHbox/speedup" unique_id=944988355]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_right = 24.0
+offset_bottom = 12.0
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.16078432, 0.2509804, 0.2509804, 1)
+theme_override_font_sizes/font_size = 12
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/bottomUIHbox/pausePlay" to="." method="togglePause"]
+[connection signal="pressed" from="VBoxContainer/bottomUIHbox/speedup" to="." method="speedUp"]

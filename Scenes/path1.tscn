@@ -17,7 +17,7 @@ rotation = -0.008746133
 rotates = false
 loop = false
 
-[node name="Enemy" parent="follow" unique_id=280703511 groups=["enemy"] instance=ExtResource("1_gv2fl")]
+[node name="Enemy" parent="follow" unique_id=280703511 instance=ExtResource("1_gv2fl")]
 position = Vector2(30.613993, -298.74368)
 rotation = 0.008746133
 scale = Vector2(1.0000001, 1.0000001)

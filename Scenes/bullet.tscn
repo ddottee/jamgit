@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpa2gklmx40mw"]
 
 [ext_resource type="Script" uid="uid://bek35po0q1prb" path="res://Scripts/bullet.gd" id="1_xjght"]
-[ext_resource type="Texture2D" uid="uid://bke4qlkdys13y" path="res://Assets/Sprites/candy.png" id="2_oduel"]
+[ext_resource type="Texture2D" uid="uid://bke4qlkdys13y" path="res://Assets/Sprites/Towers/towerAssets/candy.png" id="2_oduel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
 
