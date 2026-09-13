@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dimrx52te3p7u" path="res://Scripts/pathSpawner.gd" id="1_pvlyd"]
 
-[node name="PathSpawner" type="Node2D" unique_id=1462728938]
+[node name="PathSpawner" type="Node2D" unique_id=1462728938 groups=["pathSpawner"]]
 script = ExtResource("1_pvlyd")
 
 [node name="enemyTimer" type="Timer" parent="." unique_id=524960693]

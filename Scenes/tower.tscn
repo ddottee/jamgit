@@ -36,10 +36,6 @@ autostart = true
 [node name="aimMark" type="Marker2D" parent="." unique_id=768596189]
 position = Vector2(5, 0)
 
-[node name="upgradeMenu" parent="." unique_id=642196138 instance=ExtResource("3_tghyl")]
-texture_filter = 1
-scale = Vector2(1, 1)
-
 [node name="towerArea" type="Area2D" parent="." unique_id=633552855]
 
 [node name="towerCollider" type="CollisionShape2D" parent="towerArea" unique_id=794426740]
@@ -53,8 +49,10 @@ visible = false
 texture_filter = 1
 texture = ExtResource("4_ou3m2")
 
+[node name="upgradeMenu" parent="." unique_id=1949348179 instance=ExtResource("3_tghyl")]
+scale = Vector2(0.5, 0.5)
+
 [connection signal="timeout" from="shotTimer" to="." method="_on_shot_timer_timeout"]
-[connection signal="pressed" from="upgradeMenu/upgradeButton" to="." method="_on_upgrade_button_pressed"]
 [connection signal="input_event" from="towerArea" to="." method="_on_tower_area_input_event"]
 
 [editable path="upgradeMenu"]

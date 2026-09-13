@@ -6,3 +6,4 @@ signal startGame
 signal playerWin
 signal playerLose
 signal damagePlayer
+signal updateCash

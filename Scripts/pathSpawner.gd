@@ -6,13 +6,17 @@ extends Node2D
 @onready var levelEnemies = level.totalEnemies
 
 func _ready():
-	self.position = get_parent().pathSpawnPos
-	enemyTimer.start(GlobalScript.enemyDelay)
-
+	var offsetDelay = 0
+	for sibling in get_parent().get_child_count():
+		if get_parent().get_child(sibling).is_in_group("pathSpawner") and get_parent().get_child(sibling).get_index() > self.get_index():
+			offsetDelay += .5
+	enemyTimer.start(GlobalScript.enemyDelay + offsetDelay)
+	enemyTimer.autostart = false
 
 
 func _on_enemy_timer_timeout() -> void:
-		
+	enemyTimer.start(GlobalScript.enemyDelay)
+	enemyTimer.autostart = true
 	if levelEnemies >= 0:
 		var temp = path.instantiate()
 		add_child(temp)

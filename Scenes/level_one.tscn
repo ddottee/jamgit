@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b0u18a6ihb1g8" path="res://Assets/tilesets/undead/Tiled_files/Objects.png" id="9_yb7v2"]
 [ext_resource type="PackedScene" uid="uid://01douy3fo7t8" path="res://Scenes/tower.tscn" id="13_62atx"]
 [ext_resource type="PackedScene" uid="uid://bdf04o6tn4ag4" path="res://Scenes/main_ui.tscn" id="14_el6qx"]
+[ext_resource type="PackedScene" uid="uid://dr6pbkjgtd7v0" path="res://Scenes/path_1b.tscn" id="14_wi0ml"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_el6qx"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -9296,6 +9297,8 @@ adjustment_saturation = 1.19
 
 [node name="Main" type="Node2D" unique_id=344836273 groups=["GameplayMusic", "Level"]]
 
+[node name="mainUI" parent="." unique_id=479822321 instance=ExtResource("14_el6qx")]
+
 [node name="level" type="Node2D" parent="." unique_id=2120535700]
 script = ExtResource("1_b7vm3")
 
@@ -9313,11 +9316,10 @@ tile_map_data = PackedByteArray("AABJAA0AAQAgAAoAAABJAA4AAQAgAAsAAABKAA0AAQAhAAo
 tile_set = SubResource("TileSet_57qmd")
 metadata/_edit_group_ = true
 
-[node name="PathSpawner" parent="level" unique_id=1462728938 instance=ExtResource("6_gni6d")]
-position = Vector2(136, -2)
+[node name="PathSpawnera" parent="level" unique_id=1462728938 instance=ExtResource("6_gni6d")]
 
-[node name="PathSpawner2" parent="level" unique_id=1055664528 instance=ExtResource("6_gni6d")]
-position = Vector2(208, 0)
+[node name="PathSpawnerb" parent="level" unique_id=1055664528 instance=ExtResource("6_gni6d")]
+path = ExtResource("14_wi0ml")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="level" unique_id=787139990]
 environment = SubResource("Environment_g4v7s")
@@ -9326,6 +9328,4 @@ environment = SubResource("Environment_g4v7s")
 color = Color(0.9276271, 0.83886033, 0.81420016, 1)
 
 [node name="Tower" parent="level" unique_id=112576211 instance=ExtResource("13_62atx")]
-position = Vector2(1574, 267)
-
-[node name="mainUI" parent="." unique_id=479822321 instance=ExtResource("14_el6qx")]
+position = Vector2(665, 368)

@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bb7gbu6cf1ebw" path="res://Assets/GUI/Buttons/buyPressed.png" id="5_pny30"]
 [ext_resource type="Texture2D" uid="uid://bov3kpgmf30df" path="res://Assets/Sprites/Towers/defaultTower.png" id="5_wucqn"]
 [ext_resource type="Texture2D" uid="uid://bnjxyhg7m1f7e" path="res://Assets/Sprites/icons/towerUI/boots_01d.png" id="6_aqxf5"]
+[ext_resource type="Texture2D" uid="uid://c23rfgegburnp" path="res://Assets/Sprites/icons/32x32/coin_05d.png" id="7_3nta0"]
+[ext_resource type="Texture2D" uid="uid://dv5h5vhm8mjwc" path="res://Assets/GUI/upArrow.png" id="7_dpqm7"]
 [ext_resource type="Texture2D" uid="uid://bg8bg767ym128" path="res://Assets/GUI/Buttons/firstButton.png" id="9_aqxf5"]
 [ext_resource type="Texture2D" uid="uid://b8a3fp4b1ub24" path="res://Assets/GUI/Buttons/lastButton.png" id="10_dpqm7"]
 
@@ -39,50 +41,44 @@ offset_right = 100.0
 offset_bottom = 130.0
 texture = ExtResource("3_l501a")
 
-[node name="upgradeCont" type="HBoxContainer" parent="upgradeBar" unique_id=1290346862]
-custom_maximum_size = Vector2(82, 9)
-layout_mode = 0
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 85.0
-offset_bottom = 11.0
-
-[node name="damageIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=1006913326]
-texture_filter = 1
-custom_maximum_size = Vector2(10, -1)
-layout_mode = 2
-texture = ExtResource("4_a0p33")
-stretch_mode = 5
-
-[node name="damageNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1349194309]
-layout_mode = 2
-
-[node name="rangeIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=214765955]
-layout_mode = 2
-texture = ExtResource("5_bx467")
-stretch_mode = 5
-
-[node name="rangeNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1278211351]
-layout_mode = 2
-
-[node name="speedIcon" type="TextureRect" parent="upgradeBar/upgradeCont" unique_id=1706397707]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("6_aqxf5")
-stretch_mode = 5
-
-[node name="speedNum" type="Label" parent="upgradeBar/upgradeCont" unique_id=1403004102]
-layout_mode = 2
-
-[node name="upgradeButton" type="TextureButton" parent="." unique_id=1110322026]
+[node name="upgradeButton" type="TextureButton" parent="upgradeBar" unique_id=1110322026]
 texture_filter = 1
 layout_mode = 0
-offset_left = 43.0
-offset_top = 131.0
-offset_right = 69.0
-offset_bottom = 144.0
+offset_left = 32.0
+offset_right = 58.0
+offset_bottom = 13.0
 texture_normal = ExtResource("4_l501a")
 texture_pressed = ExtResource("5_pny30")
+
+[node name="upArrow2" type="TextureRect" parent="upgradeBar" unique_id=46423946]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 14.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_dpqm7")
+stretch_mode = 5
+
+[node name="costLabel" type="Label" parent="upgradeBar" unique_id=1285254629]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 111.0
+offset_bottom = 15.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0.16078432, 0.2509804, 0.2509804, 1)
+theme_override_font_sizes/font_size = 12
+text = "10"
+
+[node name="costIcon" type="TextureRect" parent="upgradeBar" unique_id=260470368]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -12.6
+offset_right = 72.0
+offset_bottom = 25.4
+texture = ExtResource("7_3nta0")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="targetTypeButton" type="TextureButton" parent="." unique_id=1702323085]
 texture_filter = 1
@@ -115,17 +111,6 @@ text = "Tower"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="Label" parent="." unique_id=1526700656]
-texture_filter = 1
-layout_mode = 0
-offset_left = 59.0
-offset_top = 32.0
-offset_right = 104.0
-offset_bottom = 65.0
-theme_override_font_sizes/font_size = 5
-text = "tower 
-description"
-
 [node name="damageIcon" type="TextureRect" parent="." unique_id=1895051511]
 texture_filter = 1
 custom_maximum_size = Vector2(10, -1)
@@ -138,6 +123,18 @@ texture = ExtResource("4_a0p33")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="damageNum" type="Label" parent="." unique_id=451447272]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 80.0
+offset_right = 48.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.16078432, 0.2509804, 0.2509804, 1)
+theme_override_font_sizes/font_size = 10
+text = "5"
+horizontal_alignment = 1
+
 [node name="rangeIcon" type="TextureRect" parent="." unique_id=1944337389]
 texture_filter = 1
 layout_mode = 0
@@ -149,6 +146,18 @@ texture = ExtResource("5_bx467")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="rangeNum" type="Label" parent="." unique_id=1270156419]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 84.0
+offset_top = 80.0
+offset_right = 100.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.16078432, 0.2509804, 0.2509804, 1)
+theme_override_font_sizes/font_size = 10
+text = "5"
+horizontal_alignment = 1
+
 [node name="speedIcon" type="TextureRect" parent="." unique_id=705328877]
 texture_filter = 1
 layout_mode = 0
@@ -159,3 +168,15 @@ offset_bottom = 106.0
 texture = ExtResource("6_aqxf5")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="speedNum" type="Label" parent="." unique_id=1716815842]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 97.0
+offset_right = 48.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.16078432, 0.2509804, 0.2509804, 1)
+theme_override_font_sizes/font_size = 10
+text = "5"
+horizontal_alignment = 1

@@ -7,7 +7,7 @@ class_name Enemy
 @export var health:= 5
 @export var speed := 50
 @export var damage := 1
-
+@export var cashVal := 2
 
 @export_group("Behavior")
 
@@ -33,4 +33,6 @@ func damagePlayer():
 	queue_free()
 
 func die():
+	GlobalScript.playerCash += cashVal
+	SignalBus.emit_signal("updateCash")
 	queue_free()

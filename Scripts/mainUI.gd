@@ -11,6 +11,7 @@ var speedup := 1.0
 
 func _ready() -> void:
 	SignalBus.damagePlayer.connect(updateHealth)
+	SignalBus.updateCash.connect(updateCash)
 	updateHealth()
 	updateCash()
 	speedLabel.text = str(int(Engine.get_time_scale())) + "x"

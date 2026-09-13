@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dr6pbkjgtd7v0"]
+
+[ext_resource type="Curve2D" uid="uid://blqccsqvfseg0" path="res://Scenes/path1b.tres" id="1_bchw0"]
+[ext_resource type="PackedScene" uid="uid://dohr5ci2ffcq1" path="res://Scenes/enemy.tscn" id="2_1rx6q"]
+
+[node name="path1a" type="Path2D" unique_id=525015172 groups=["enemy"]]
+curve = ExtResource("1_bchw0")
+
+[node name="follow" type="PathFollow2D" parent="." unique_id=1282789025]
+position = Vector2(208, 0)
+rotation = -0.008746133
+rotates = false
+loop = false
+
+[node name="Enemy" parent="follow" unique_id=280703511 instance=ExtResource("2_1rx6q")]
+rotation = 0.008746133
+scale = Vector2(1.0000001, 1.0000001)

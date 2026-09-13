@@ -9,6 +9,13 @@ class_name Tower
 @onready var towerSprite: Sprite2D = $towerSprite
 @onready var targetTypeButton: TextureButton = $upgradeMenu/targetTypeButton
 @onready var rangeDisplay: Sprite2D = $rangeDisplay
+@onready var damageNum: Label = $upgradeMenu/damageNum
+@onready var rangeNum: Label = $upgradeMenu/rangeNum
+@onready var speedNum: Label = $upgradeMenu/speedNum
+@onready var upgradeButton: TextureButton = $upgradeMenu/upgradeBar/upgradeButton
+@onready var costLabel: Label = $upgradeMenu/upgradeBar/costLabel
+
+
 
 enum targetTypes { FIRST, LAST }
 
@@ -39,6 +46,7 @@ var canShoot := false
 
 
 func _ready() -> void:
+	upgradeButton.pressed.connect(_on_upgrade_button_pressed)
 	rangeArea.body_entered.connect(_on_range_area_body_entered)
 	rangeArea.body_exited.connect(_on_range_area_body_exited)
 	rangeDisplay.scale = 1/32 * Vector2(rangeCollider.shape.radius, rangeCollider.shape.radius)
@@ -143,7 +151,10 @@ func Shoot() -> void:
 
 
 func updateStats() -> void:
-	pass
+	damageNum.text = str(damage)
+	speedNum.text = str(shotSpeed)
+	rangeNum.text = str(targetRange)
+	costLabel.text = str(upgradeCost)
 
 
 func _on_range_area_body_entered(body: Node2D) -> void:
@@ -162,10 +173,10 @@ func _on_range_area_body_exited(body: Node2D) -> void:
 func upgradeStats() -> void:
 
 	level += 1
-	targetRange *= 1.5
+	targetRange += 20
 	damage *= 2
-	shotSpeed *= 2
-
+	shotSpeed += 1
+	upgradeCost *= 2
 	rangeCollider.shape.set_deferred("radius", targetRange)
 	shotTimer.wait_time = 1.0 / shotSpeed
 
@@ -173,8 +184,9 @@ func upgradeStats() -> void:
 func _on_tower_area_input_event(viewport: Node,event: InputEvent,shape_idx: int) -> void:
 
 	if event is InputEventMouseButton and event.button_mask == 1:
+		
 		upgradeMenu.show()
-	
+		updateStats()
 
 func _on_upgrade_button_pressed() -> void:
 	rangeDisplay.show()
